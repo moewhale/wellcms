@@ -1,63 +1,61 @@
-# WellCMS 2.0
+## 中文 / Chinese
 
-#### 介绍
-在这个最不缺信息的大数据时代，几乎周围的一切都在追求快，而创业者们也在追求对大数据量的承载和高性能的掌控。
+### 简介
+WellCMS 3.0 是一款基于现代 PHP 架构的内容管理系统，支持插件扩展、主题定制、数据库分片及任务调度。
 
-WellCMS 是一款具备亿级负载、MIT协议开源、倾向移动端、轻量级、具有超快反应能力的高负载CMS，是大数据量、高并发访问网站最佳选择的轻CMS。wellcms具有安全、高效、稳定、速度超快、负载超强的特点。是大数据时代下诞生的CMS，专为大数据站点设计的高性能、高负载的CMS。前后台均可在移动端操作，自适应手机、Pad、PC，也可以设置各端加载单独模板，并且URL保持不变，有着非常方便的插件机制。前台部分页面配备API，可通过JSON返回AJAX请求的数据，方便 APP 开发。
+### 核心特性
+- **现代 PHP 架构**：基于 PSR-7 HTTP 标准、依赖注入容器与服务提供者模式
+- **插件系统**：支持插件的安装、卸载、启用与市场接入
+- **主题机制**：支持父子主题继承与自定义模板
+- **数据库能力**：连接池、读写分离、分库分表与分区维护
+- **任务调度**：内置调度器，支持定时任务与队列执行
+- **多语言支持**：内置 14 种语言包
+- **缓存体系**：支持 Redis、Memcached、APCu、Yac 等多种缓存驱动
+- **安全管理**：CSRF、XSS、权限、Token、IP 黑名单等多重安全机制
+- **Swoole 支持**：提供 Swoole Server 与协程环境下的运行能力
 
-采用静态语言编程风格，充分发挥 PHP7 OPCache 的威力。前端基于 BootStrap 4.5、JQuery 3.5作为前端类库，对第三方类库依赖少。后端基于 PHP/7.* 数据库MySQL或MariaDB，支持 XCache/Yac/Redis/Memcached等缓存。
+### 安装方式
+1. 将代码部署到 Web 根目录
+2. 将 `src/Config/*.default.php` 复制为 `config/*.php` 并按需配置
+3. 访问 `/install/` 完成数据库安装
 
-WellCMS 基于XiunoPHP开发，只有22张表，运行速度非常快，处理单次请求在 0.01 秒级别，开启缓存可达到 0.003 秒级别。
+### 系统要求
+- PHP >= 8.0
+- MySQL / MariaDB / PostgreSQL / SQLite
+- Redis（可选，用于缓存与任务队列）
 
-支持语言简体中文 / 繁体中文 / 英文，支持多端绑定模板，支持独立版块绑定模板，支持前后端代码压缩，支持免登陆入库，支持伪静态，支持数据库类型pdo_MySQL和MySQL，支持数据库引擎MyISAM和InnoDB，支持SSL，支持CDN，支持各种NoSQL操作，支持附件分离，支持多台DB主从读写分离。分布式服务器设计，每张表都可创建单独的DB服务器群和CACHE服务器(群)，单表可承载高达亿级以上的数据，方便部署和维护，是一个二次开发非常好的基石。
+### 注意事项
+- 此为首个版本，建议用于测试与评估环境
+- 生产部署前请仔细阅读 `bin/SWOOLE_DEPLOY_GUIDE.md` 与 `bin/SCHEDULER_DEPLOY_GUIDE.md`
 
- 开发原则：<br>
-1.不写重复无用的代码，保证代码干净、整洁、可读性强；<br>
-2.不设计过度重复的业务逻辑，对于大数组用完即释放；<br>
-3.不在MySQL做任何运算，只把MySQL当作储存库使用，并且将大量的运算放到客户端，并发问题尽量由客户端控制。所以即使单表亿级以上数据，依然飞快顺滑的打开每个页面；<br>
-4.对每个表尽量只查询一次，不做重复查询占用资源的事情；<br>
-5.绝不在业务层和模板中直接使用MySQL语句，所有DB操作必须封装使用；<br>
-6.不管是PHP还是MySQL，尽量不使用高级特性和高级功能。没有为什么，我脑子笨，不会写，学的也慢。
+---
 
-运行环境要求CentOS 6或CentOS 7（CentOS 8要求最低2G内存，不推荐，可根据喜好安装任意linux系统，windows服务器未测试）、1核1G内存、Nginx或Apache、php7以上（最低支持php5.2）、mysql5.5.6（无需高版本，对于wellcms真心没必要，mysql5.6（包含5.6）以上要求最低1G内存）、OPcache、Yac。这样的硬件环境，已经可以承载亿级数据，并且运行依然飞快。
+## English
 
-WellCMS 优势之一，对硬件要求不高，可在最低配置的环境下，高效运行。轻量级1G内存服务器随，只要硬盘够大，带宽够足，随便跑。
+### Introduction
+WellCMS 3.0 is a content management system built on modern PHP architecture, supporting plugin extensions, theme customization, database sharding, and task scheduling.
 
-WellCMS 采用 MIT 协议发布，您可以自由修改、派生版本、商用而不用担心任何法律风险（但修改后应保留原来文件的版权信息）。
+### Key Features
+- **Modern PHP Architecture**: PSR-7 HTTP standard, dependency injection container, and service provider pattern
+- **Plugin System**: Install, uninstall, enable plugins, and connect to the plugin market
+- **Theme Mechanism**: Parent-child theme inheritance and custom templates
+- **Database Capabilities**: Connection pooling, read/write splitting, sharding, and partition maintenance
+- **Task Scheduling**: Built-in scheduler supporting cron jobs and queue execution
+- **Multi-language Support**: 14 built-in language packs
+- **Caching System**: Redis, Memcached, APCu, Yac, and more cache drivers
+- **Security Management**: CSRF, XSS, permissions, tokens, IP blacklist, and more
+- **Swoole Support**: Swoole Server and coroutine runtime support
 
-代码中预留了大量钩子和注释，AOP插件机制，采用 hook 插入，overwrite 方式覆盖，性能方面零损耗，不影响编译，强大而又简单。使用者可自由扩展程序的功能，开发者可尽情二次开发。
+### Installation
+1. Deploy the code to your web root directory
+2. Copy `src/Config/*.default.php` to `config/*.php` and configure as needed
+3. Visit `/install/` to complete database installation
 
-#### 安装教程
+### Requirements
+- PHP >= 8.0
+- MySQL / MariaDB / PostgreSQL / SQLite
+- Redis (optional, for caching and task queues)
 
-1. 确认您的主机支持 PHP，并且已经开通并且配置好了 MySQL。
-3. 设置如下目录和文件为可写(Linux: 目录权限为 0777，Windows 设置用户 everyone 可读写）
-    ./upload
-    ./plugin
-    ./tmp
-    ./log
-    ./conf
-    ./view/template
-4. 上传所有文件到你的网站根目录
-5. 访问 http://www.domain.com/install/, 根据提示安装。
-6. 删除 install 和 tool 目录
-
-wellcms 支持 4 种格式伪静态：
-
-0:?user-login.html
-1:user-login.html
-2:/user/login.html
-3:/user/login
-
-伪静态规则
-http://www.wellcms.cn/read-6.html
-
-#### 使用说明
-
-http://www.wellcms.cn/list-2.html
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+### Notes
+- This is the first release, recommended for testing and evaluation environments
+- For production deployment, please read `bin/SWOOLE_DEPLOY_GUIDE.md` and `bin/SCHEDULER_DEPLOY_GUIDE.md` first
