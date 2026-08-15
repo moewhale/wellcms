@@ -831,6 +831,8 @@ function file_replace_var($filepath, $replace = array(), $pretty = FALSE)
     $ext = file_ext($filepath);
     if ('php' == $ext) {
         $arr = include $filepath;
+		// 如果文件是空的或沒有 return 陣列，將 $arr 設為空陣列
+        if (!is_array($arr)) $arr = array();
         $arr = array_merge($arr, $replace);
         $s = "<?php\r\nreturn " . var_export($arr, true) . ";\r\n?>";
         // 备份文件
